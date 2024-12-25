@@ -12,7 +12,9 @@ const app = express();
 
 connectDB();
 
-app.use(cors());
+app.use(cors({
+  origin:"https://dynamic-melomakarona-44f546.netlify.app/"
+}));
 app.use(express.json());
 
 app.use('/api/auth', userRoutes);
@@ -27,6 +29,10 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ message: 'Something went wrong, please try again later.' });
 });
+
+app.get('/api/endpoint', (req, res) => {
+  res.json({ message: 'Hello from the backend!' });
+})
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
