@@ -13,7 +13,9 @@ const app = express();
 connectDB();
 
 app.use(cors({
-  origin:"https://dynamic-melomakarona-44f546.netlify.app/"
+   origin: 'https://dynamic-melomakarona-44f546.netlify.app', 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+  credentials: true
 }));
 app.use(express.json());
 
